@@ -1,0 +1,136 @@
+/* 1. CRITICAL RESET: Force the base document structures to strictly lock to the viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Stops the overall page container from creating a scroll bar */
+}
+
+.wrapper {
+    display: grid;
+    height: 100vh; /* Changed from 100% to 100vh to force a hard boundary matching the screen */
+    width: 100%;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 15% 85%;
+    grid-template-areas:
+        "nav nav"
+        "side path" 
+        "side main";
+    overflow: hidden;
+}
+
+.topnav {
+    grid-area: nav;
+    z-index: 100;
+    background-color: #29564c;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+#sidenav {
+    grid-area: side;
+    background-color: #29564c;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;     
+    overflow: hidden;   
+}
+
+#sidecontent {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    scrollbar-color: #1a3831 transparent; 
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+.pathContainer {
+    display: flex;
+    flex-direction: row;
+    grid-area: path;
+}
+
+.pathContainer button {
+    width: 50px;
+    height: 100%;
+}
+.pathContainer button:hover {
+    cursor: pointer;
+}
+
+#pathDisplay {
+    padding-left: 40px;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+#pathDisplay div:hover {
+    cursor: pointer;
+}
+
+#sidecontent div {
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: font-size 0.2s ease;
+    padding: 5px 15px; /* Added spacing so file options are easily clickable */
+    color: rgb(0, 0, 0);       /* Contrast adjustment for readability */
+}
+
+#sidecontent div:hover {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.staging-area {
+    grid-area: main;
+    display: flex;             
+    justify-content: center;  
+    align-items: center;      
+    background-color: #1a1a1a; 
+    overflow: hidden;          
+    padding: 20px;          
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.staging-area canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#test {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
