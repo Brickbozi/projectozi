@@ -1,6 +1,6 @@
 let scaleStep = 0.1;
 let transStep = 0.002;
-let angleStep = 0.02;
+let angleStep = 10.0;
 let isDragging = false;
 let horReflect = false;
 let vertReflect = false;
@@ -8,6 +8,7 @@ let canvas
 let device, context, pipeline, uniformBuffer, sampler, bindGroup, renderPassDescriptor;
 let scale, angle, translationX, translationY;
 let currentTexture = null;
+
 
 async function initViewer() {
 
@@ -33,9 +34,11 @@ async function initViewer() {
     });
 
     canvas.addEventListener("wheel", (event) => {
+        
+
         if (event.deltaY > 0) {
             if (isDragging) {
-                angle = angle - angleStep;
+                angle = angle - angleStep
             } else {
                 if (scale > 0.5) {
                     scale = scale - scaleStep;
@@ -43,7 +46,7 @@ async function initViewer() {
             }
         } else {
             if (isDragging) {
-                angle = angle + angleStep;
+                angle = angle + angleStep
             } else {
                 scale += scaleStep;
             }
@@ -59,6 +62,7 @@ async function initViewer() {
     document.addEventListener('mousemove', (e) => {
         let dx = e.movementX;
         let dy = e.movementY;
+        
         if (isDragging) {
             if (e.movementX > 0) {
                 translationX = translationX + (transStep * dx);
@@ -187,6 +191,8 @@ function createModelMatrix() {
     let imgScaleX = 1.0;
     let imgScaleY = 1.0;
 
+    let radians = angle * (Math.PI / 180)
+
     if (imageRatio > 1.0) {
         imgScaleY = 1.0 / imageRatio;
     } else {
@@ -197,8 +203,8 @@ function createModelMatrix() {
     const finalScaleY = imgScaleY * scale;
 
 
-    const c = Math.cos(angle);
-    const s = Math.sin(angle);
+    const c = Math.cos(radians);
+    const s = Math.sin(radians);
 
     const hFlip = horReflect ? -1.0 : 1.0;
     const vFlip = vertReflect ? -1.0 : 1.0;

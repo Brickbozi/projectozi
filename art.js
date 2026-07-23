@@ -1,6 +1,3 @@
-
-
-
 const sidenav = document.getElementById("sidecontent")
 const pathDisplay = document.getElementById("pathDisplay")
 const img = new Image();
@@ -57,7 +54,7 @@ function isDirectory(node) {
 
 
 function fileFunc(path) {
-    
+
     img.src = path;
     img.onload = function () {
         viewNewImage();
@@ -76,7 +73,7 @@ function updatePath() {
     let depth = 0
     while (current) {
         const div = document.createElement('div');
-        if (current.prev) { div.textContent = "<" +  current.name} else {
+        if (current.prev) { div.textContent = "<" + current.name } else {
             div.textContent = current.name + " ";
         }
         const currentDepth = depth;
@@ -91,7 +88,7 @@ function updatePath() {
 
 function revert(times) {
     if (times == 0) { return }
-    for(let i = 0; i < times; i++) {
+    for (let i = 0; i < times; i++) {
         backFunc()
     }
 }
@@ -124,9 +121,40 @@ function checkNode(folder) {
     }
 }
 
+// let obj = metaData.filter(path => path.toLowerCase().includes("Throwaway".toLowerCase()));
+
+// console.log(obj);'
 
 
 initViewer();
 let list = new LinkedList(Gallery, "root");
 updatePath()
 checkNode(list.head.value)
+
+
+function openFolderFromPath(fullPath) {
+
+    const parts = fullPath.split('/');
+    const folderSequence = parts.slice(0, -1);
+    list = new LinkedList(Gallery, parts[0]);
+    let currentFolderObj = Gallery;
+    for (let i = 1; i < folderSequence.length; i++) {
+        const folderName = folderSequence[i];
+        if (currentFolderObj[folderName]) {
+            currentFolderObj = currentFolderObj[folderName];
+            list.append(currentFolderObj, folderName);
+        } else {
+            console.error(`Directory missing along path traversal: ${folderName}`);
+            return;
+        }
+    }
+    updatePath();
+    checkNode(currentFolderObj);
+    const fileName = parts[parts.length - 1];
+    if (currentFolderObj[fileName] && currentFolderObj[fileName].path) {
+        fileFunc(currentFolderObj[fileName].path);
+    }
+
+}
+
+

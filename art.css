@@ -1,21 +1,83 @@
-/* 1. CRITICAL RESET: Force the base document structures to strictly lock to the viewport */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
-    overflow: hidden; /* Stops the overall page container from creating a scroll bar */
+    overflow: hidden;
+    /* Stops the overall page container from creating a scroll bar */
+    background-color: #39705f;
+    color: white;
+    font-family: "Red Hat", monospace;
+
+}
+
+@keyframes textAnimation {
+    0% {
+        clip-path: polygon(20% 0%, 80% 0%, 80% 80%, 20% 80%);
+    }
+
+    25% {
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    75% {
+        clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%);
+    }
+
+    100% {
+        clip-path: polygon(20% 0%, 80% 0%, 80% 80%, 20% 80%);
+    }
+}
+.greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.highlight-container {
+    width: 300px;
+    font-size: 70px;
+    font-weight: normal;
+    text-align: center;
+    justify-content: center;
+    text-shadow: 2px 2px 4px #000000;
+    z-index: 1;
+    display: inline-flex;
+    position: relative;
+}
+
+.polygon {
+    background-color: black;
+    animation: textAnimation 1.5s linear infinite;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    flex: 1;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    z-index: -1;
+}
+
+
+p {
+    font-size: 30px;
+}
+
+li {
+    font-size: 30px;
 }
 
 .wrapper {
     display: grid;
-    height: 100vh; /* Changed from 100% to 100vh to force a hard boundary matching the screen */
+    height: 100vh;
+    /* Changed from 100% to 100vh to force a hard boundary matching the screen */
     width: 100%;
     grid-template-rows: auto auto 1fr;
     grid-template-columns: 15% 85%;
     grid-template-areas:
         "nav nav"
-        "side path" 
+        "side path"
         "side main";
     overflow: hidden;
 }
@@ -42,7 +104,7 @@ html, body {
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: black;
     color: white;
 }
 
@@ -52,23 +114,23 @@ html, body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 100%;     
-    overflow: hidden;   
+    height: 100%;
+    overflow: hidden;
 }
 
 #sidecontent {
     width: 100%;
     height: 100%;
-    overflow-y: auto; 
+    overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 40px;
     box-sizing: border-box;
-    scrollbar-color: #1a3831 transparent; 
+    scrollbar-color: #1a3831 transparent;
     scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f100;
+    background: #f1f1f100;
 }
 
 .pathContainer {
@@ -81,6 +143,7 @@ html, body {
     width: 50px;
     height: 100%;
 }
+
 .pathContainer button:hover {
     cursor: pointer;
 }
@@ -92,6 +155,7 @@ html, body {
     display: flex;
     flex-direction: row;
 }
+
 #pathDisplay div:hover {
     cursor: pointer;
 }
@@ -100,8 +164,10 @@ html, body {
     font-size: 20px;
     box-sizing: border-box;
     transition: font-size 0.2s ease;
-    padding: 5px 15px; /* Added spacing so file options are easily clickable */
-    color: rgb(0, 0, 0);       /* Contrast adjustment for readability */
+    padding: 5px 15px;
+    /* Added spacing so file options are easily clickable */
+    color: rgb(0, 0, 0);
+    /* Contrast adjustment for readability */
 }
 
 #sidecontent div:hover {
@@ -111,12 +177,12 @@ html, body {
 
 .staging-area {
     grid-area: main;
-    display: flex;             
-    justify-content: center;  
-    align-items: center;      
-    background-color: #1a1a1a; 
-    overflow: hidden;          
-    padding: 20px;          
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    overflow: hidden;
+    padding: 20px;
     box-sizing: border-box;
     height: 100%;
 }
@@ -132,5 +198,5 @@ html, body {
     max-height: 100%;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
