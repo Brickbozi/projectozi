@@ -1,6 +1,8 @@
 const sidenav = document.getElementById("sidecontent")
 const pathDisplay = document.getElementById("pathDisplay")
 const img = new Image();
+let selected = false;
+let selectedName ="";
 
 class Node {
     constructor(value, name) {
@@ -53,8 +55,16 @@ function isDirectory(node) {
 }
 
 
-function fileFunc(path) {
+function fileFunc(path, name) {
+    
+    if (selected) {
+        let prevSelected = document.getElementsByClassName('selected')[0];
+        if (prevSelected) {prevSelected.classList.toggle('selected');}
 
+    }
+
+    selected = true;
+    selectedName = name;
     img.src = path;
     img.onload = function () {
         viewNewImage();
@@ -62,9 +72,20 @@ function fileFunc(path) {
 }
 
 function folderFunc(node, name) {
+
     list.append(node, name)
     updatePath()
     checkNode(node)
+
+    if (selected) {
+        const selectables = document.querySelectorAll('span.highlight-text');
+        const target = Array.from(selectables).find(el => el.textContent === selectedName);
+        if (target) {
+            console.log("found")
+            target.parentElement.classList.toggle('selected');
+        }
+        
+    }
 }
 
 function updatePath() {
@@ -107,15 +128,29 @@ function checkNode(folder) {
     sidenav.innerHTML = "";
     for (const key in folder) {
         const fileData = folder[key];
-        const div = document.createElement('div');
-        div.textContent = key;
+        const div = document.createElement('span');
+        div.className = "highlight-container";
+
+        const polygon = document.createElement('span');
+        polygon.className = "polygon";
+        div.append(polygon);
+
+        const textCont = document.createElement('span');
+        textCont.className = "highlight-text";
+        textCont.textContent = key;
+        div.appendChild(textCont);
+
+
 
         if (isDirectory(fileData)) {
             div.addEventListener('click', () => folderFunc(fileData, key));
             sidenav.appendChild(div);
             continue;
         }
-        div.addEventListener('click', () => fileFunc(fileData.path));
+        div.addEventListener('click', () => { 
+            fileFunc(fileData.path, key);
+            div.classList.toggle('selected');
+        });
         sidenav.appendChild(div);
 
     }

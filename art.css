@@ -33,20 +33,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.highlight-container {
-    width: 300px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     font-size: 70px;
     font-weight: normal;
     text-align: center;
     justify-content: center;
     text-shadow: 2px 2px 4px #000000;
     z-index: 1;
-    display: inline-flex;
+}
+.highlight-container {
+    display: flex;
     position: relative;
 }
 
+.highlight-text {
+    z-index: 1;
+}
+
 .polygon {
+    display: none;
     background-color: black;
     animation: textAnimation 1.5s linear infinite;
     position:absolute;
@@ -56,9 +64,16 @@ body {
     left: 0;
     flex: 1;
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    z-index: -1;
 }
 
+.selected .polygon {
+    background-color:#eb60c8;
+    display: block;
+}
+
+.highlight-container:hover .polygon {
+    display: block;
+}
 
 p {
     font-size: 30px;
@@ -127,6 +142,8 @@ li {
     box-sizing: border-box;
     scrollbar-color: #1a3831 transparent;
     scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
 }
 
 ::-webkit-scrollbar-track {
@@ -165,12 +182,25 @@ li {
     box-sizing: border-box;
     transition: font-size 0.2s ease;
     padding: 5px 15px;
+    color: white;
+}
+
+#sidecontent span {
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: font-size 0.2s ease;
+    padding: 5px 15px;
     /* Added spacing so file options are easily clickable */
-    color: rgb(0, 0, 0);
+    color: white;
     /* Contrast adjustment for readability */
 }
 
 #sidecontent div:hover {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#sidecontent span:hover {
     font-size: 30px;
     cursor: pointer;
 }
