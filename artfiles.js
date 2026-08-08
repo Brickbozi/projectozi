@@ -122,7 +122,9 @@ const Gallery = {
 				"powergirl wip2.png":{"path": "Gallery/Anatomy/Faces/Power Girl/powergirl wip2.png"}
 			},
 			"Sheena.webp":{"path": "Gallery/Anatomy/Faces/Sheena.webp"},
-			"Failed Ringo.png":{"path": "Gallery/Anatomy/Faces/Failed Ringo.png"}
+			"Failed Ringo.png":{"path": "Gallery/Anatomy/Faces/Failed Ringo.png"},
+			"Spunagain (Jayme).clip":{"path": "Gallery/Anatomy/Faces/Spunagain (Jayme).clip"},
+			"Illustration.clip":{"path": "Gallery/Anatomy/Faces/Illustration.clip"}
 		},
 		"Notes": {
 			"Pelvis Notes 7-6-2025.png":{"path": "Gallery/Anatomy/Notes/Pelvis Notes 7-6-2025.png"},
@@ -320,6 +322,8 @@ const metaData = [
 	"Gallery/Anatomy/Faces/Power Girl/powergirl wip2.png",
 	"Gallery/Anatomy/Faces/Sheena.webp",
 	"Gallery/Anatomy/Faces/Failed Ringo.png",
+	"Gallery/Anatomy/Faces/Spunagain (Jayme).clip",
+	"Gallery/Anatomy/Faces/Illustration.clip",
 	"Gallery/Anatomy/Notes/Pelvis Notes 7-6-2025.png",
 	"Gallery/Anatomy/Notes/Pelvis Notes 7-8-2025.png",
 	"Gallery/Anatomy/Notes/Pelvis Notes 7-9-2025.png",

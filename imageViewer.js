@@ -176,7 +176,7 @@ async function initViewer() {
         colorAttachments: [
             {
                 // view: <- to be filled out when we render
-                clearValue: [0.3, 0.3, 0.3, 1],
+                clearValue: [0.224, 0.439, 0.373, 1.0],
                 loadOp: 'clear',
                 storeOp: 'store',
             },
