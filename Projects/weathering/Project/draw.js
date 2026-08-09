@@ -2,7 +2,7 @@ let gridSize = 20
 let faults = 0
 let weathering = 10
 let heightMap = false;
-let camera = [0., 0.55, -1.5]
+let camera = [0., 0.55, -2.]
 let ctrlCam = false;
 let lightpos = [0.2, 0.5, -1.2];
 let rotate = false;
@@ -140,9 +140,7 @@ window.addEventListener('load', document.querySelector('#ctrlCam').addEventListe
 window.addEventListener('load', document.querySelector('#rotate').addEventListener('click', event => {
     rotate = !rotate;
 }))
-window.addEventListener('load', document.querySelector('#lightCtrl').addEventListener('click', event => {
-    lightCtrl = !lightCtrl;
-}))
+
 function createGrid(gridSize) {
 
     const positions = []
