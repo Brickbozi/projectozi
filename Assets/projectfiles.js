@@ -1,15 +1,15 @@
 const Projects = {
     "Weathering": {
-        "path": "Projects/weathering"
+        "path": "../Projects/weathering"
     },
     "Spheres": {
-        "path": "Projects/Spheres"
+        "path": "../Projects/Spheres"
     },
     "Lineograph": {
-        "path": "Projects/Lineograph"
+        "path": "../Projects/Lineograph"
     },
     "Orbits": {
-        "path": "Projects/Orbits"
+        "path": "../Projects/Orbits"
     }
 
 }
