@@ -1,0 +1,106 @@
+html,
+#sidenav {
+    grid-area: side;
+    background-color: #29564c;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+
+#sidecontent {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    scrollbar-color: #1a3831 transparent;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+}
+#sidecontent div {
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: font-size 0.2s ease;
+    padding: 5px 15px;
+    color: white;
+}
+
+#sidecontent span {
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: font-size 0.2s ease;
+    padding: 5px 15px;
+    /* Added spacing so file options are easily clickable */
+    color: white;
+    /* Contrast adjustment for readability */
+}
+
+#sidecontent div:hover {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#sidecontent span:hover {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#staging-area {
+    grid-area: main;
+    display: flex;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: #39705f;
+}
+
+#staging-area canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+
+.pathContainer {
+    display: flex;
+    flex-direction: row;
+    grid-area: path;
+}
+
+.pathContainer button {
+    width: 50px;
+    height: 100%;
+}
+
+.pathContainer button:hover {
+    cursor: pointer;
+}
+
+#pathDisplay {
+    padding-left: 40px;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+#pathDisplay div:hover {
+    cursor: pointer;
+}
+
+#drawSpace {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}

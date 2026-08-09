@@ -1,0 +1,23 @@
+html,
+
+p {
+    font-size: 30px;
+}
+li {
+    font-size: 30px;
+}
+.greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 70px;
+    font-weight: normal;
+    text-align: center;
+    justify-content: center;
+    text-shadow: 2px 2px 4px #000000;
+    z-index: 1;
+}

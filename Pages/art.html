@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="/Stylesheets/general.css">
+    <link rel="stylesheet" href="/Stylesheets/art.css">
+    <script src="/Assets/artfiles.js"></script>
+    <script src="/Scripts/imageViewer.js"defer></script>
+    <script src="/Scripts/art.js" defer></script>
+</head>
+
+<body style="background-color:#203e38">
+    <div class="wrapper">
+        <nav class="topnav">
+            <a href="/index.html">Home</a>
+            <a href="/Pages/projects.html">Projects</a>
+            <a class ="active" href="/Pages/art.html">Art</a>
+        </nav>
+        <aside id="sidenav">
+            <div id="sidecontent"></div>
+        </aside>
+        <div class="pathContainer">
+            <button onclick="backFunc()"></button>
+            <div id="pathDisplay"></div>
+        </div>
+        
+        <div id="staging-area">
+            <canvas id="drawSpace"></canvas>
+        </div>
+
+    </div>
+
+</body>

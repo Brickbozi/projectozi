@@ -1,0 +1,11 @@
+html,
+#sidenav {
+    grid-area: side;
+    background-color: #29564c;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+
