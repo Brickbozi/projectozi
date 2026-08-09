@@ -78,7 +78,7 @@ async function playProject() {
 
     stagingArea.innerHTML =
         `
-    <iframe id = "project" src=${('../' + projectPath + "/Project")} 
+    <iframe id = "project" src=${(".././" + projectPath + "/Project")} 
   width="100%" 
   height="100%" 
   style = "border:none;" 
@@ -89,12 +89,12 @@ async function playProject() {
     `
 
     try {
-        let response = await fetch("../Stylesheets/general.css");
+        let response = await fetch(".././Stylesheets/general.css");
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
         let generalCSS = await response.text();
-        response = await fetch("../Stylesheets/art.css");
+        response = await fetch(".././Stylesheets/art.css");
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
