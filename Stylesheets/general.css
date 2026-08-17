@@ -12,6 +12,10 @@ body {
 
 }
 
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+
 .wrapper {
     display: grid;
     height: 100vh;
@@ -21,8 +25,8 @@ body {
     grid-template-columns: 15% 85%;
     grid-template-areas:
         "nav nav"
-        "side path"
-        "side main";
+        "main main"
+        "main main";
     overflow: hidden;
 }
 
@@ -78,7 +82,6 @@ body {
     background-color:#eb60c8;
     display: block;
 }
-
 
 .highlight-container:hover .polygon {
     display: block;

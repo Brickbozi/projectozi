@@ -1,5 +1,10 @@
 html,
 
+body {
+    overflow-y: visible;
+    scrollbar-color: #1a3831 transparent;
+    scrollbar-width: thin;
+}
 p {
     font-size: 30px;
 }
@@ -13,11 +18,39 @@ li {
     padding-left: 70px;
     padding-right: 70px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    
     font-size: 70px;
     font-weight: normal;
     text-align: center;
     justify-content: center;
     text-shadow: 2px 2px 4px #000000;
     z-index: 1;
+}
+
+.topnav {
+    position: absolute;
+    width: 100%;
+    grid-area: nav;
+    z-index: 100;
+    background-color: #29564c;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: black;
+    color: white;
 }

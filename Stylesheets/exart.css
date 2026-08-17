@@ -1,11 +1,219 @@
 html,
-#sidenav {
-    grid-area: side;
-    background-color: #29564c;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
+body {
     overflow: hidden;
 }
 
+.wrapper {
+    display: grid;
+    height: 100vh;
+    /* Changed from 100% to 100vh to force a hard boundary matching the screen */
+    width: 100%;
+    grid-template-rows: auto auto 1fr 5px;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "nav nav"
+        "main main"
+        "footer footer";
+    overflow: hidden;
+    scrollbar-color: #1a3831 transparent;
+    scrollbar-width: thin;
+}
+
+#content {
+
+    display: grid;
+    grid-area: main;
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "banner banner"
+        "img-grid img-grid";
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.item {
+    background-color: aquamarine;
+}
+
+#item1 {
+    z-index: 100;
+}
+
+#carousel-parent {
+    grid-area: banner;
+    display: grid;
+    grid-template-areas: "left mid right";
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+#left {
+    cursor: pointer;
+    grid-area: left;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    scale: -1 1;
+}
+
+#right {
+    cursor: pointer;
+    margin: auto;
+    z-index: 1;
+    grid-area: right;
+    width: 100px;
+    height: 100px;
+}
+
+.carousel-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+    grid-area: mid;
+    display: flex;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    width: 500px;
+    height: 400px;
+
+
+}
+
+#carousel-wheel {
+
+    grid-area: mid;
+    width: 500px;
+    height: 400px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    transition: transform 0.5s ease-out;
+}
+
+.carousel-card {
+
+    grid-area: mid;
+    position: absolute;
+    transform-origin: 50% 50%;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border: 4px solid black;
+    box-sizing: border-box;
+    object-fit: cover;
+    cursor: pointer;
+    transition: filter 0.5s ease;
+    filter: brightness(100%);
+}
+
+.carousel-card:hover {
+    filter: brightness(70%);
+}
+
+
+
+#image-grid-container {
+    grid-area: img-grid;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#image-grid {
+    content-visibility: auto;
+    grid-area: img-grid;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    height: 100%;
+
+}
+
+.image-thumbnail {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex: none;
+    flex-basis: 300px;
+    content-visibility: auto;
+    grid-area: img-grid;
+    contain-intrinsic-size: 0 300px;
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 4px solid black;
+    cursor: pointer;
+    transition: filter 0.5s ease;
+    filter: brightness(100%);
+}
+
+.image-thumbnail:hover {
+    filter: brightness(70%);
+}
+
+
+
+#image-viewer-container {
+    grid-area: banner;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    background-color: #24997ea4;
+}
+
+#image-viewer-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#image-viewer {
+    margin: auto;
+    
+    max-height: 80%;
+    max-width: 80%;
+    object-fit: fit;
+    border: 4px solid black;
+}
+
+#view-left {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    scale: -1 1;
+    height: 100px;
+    width: 100px;
+    margin-right: 80%
+}
+
+#view-right {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    height: 100px;
+    width: 100px;
+    margin-left: 80%;
+}
+
+#path-view {
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #3ba38b;
+}

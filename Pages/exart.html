@@ -3,9 +3,9 @@
 <head>
     <link rel="stylesheet" href="../Stylesheets/general.css">
     <link rel="stylesheet" href="../Stylesheets/exart.css">
-    <script src="artfiles.js"></script>
-    <script src="imageViewer.js"defer></script>
-    <script src="exart.js" defer></script>
+    <script src="../Assets/artfiles.js"></script>
+    <script src="../Scripts/imageViewer.js" defer></script>
+    <script src="../Scripts/exart.js" defer></script>
 </head>
 
 <body>
@@ -13,13 +13,31 @@
         <nav class="topnav">
             <a href="../index.html">Home</a>
             <a href="../Pages/projects.html">Projects</a>
-            <a class ="active" href="../Pages/art.html">ExArt</a>
+            <a class="active" href="../Pages/exart.html">Art</a>
         </nav>
-        
-        <div id="Banner"></div>
-        <div id ="Options"></div>
-        <div id="Image Grid"></div>
+        <div id="content">
+            <div id="image-viewer-container">
 
+                <span id="path-view">template</span>
+                <img src="../Assets/PlaySymbol.svg" id="view-left">
+                <img src="../Assets/PlaySymbol.svg" id="view-right">
+
+
+                <img id="image-viewer"></img>
+            </div>
+            <div id="carousel-parent">
+                <img src="../Assets/PlaySymbol.svg" id="left">
+                <img src="../Assets/PlaySymbol.svg" id="right">
+                <div class="carousel-container">
+                    <div id="carousel-wheel">
+                    </div>
+
+                </div>
+            </div>
+            <div id="image-grid-container">
+                <div id="image-grid"></div>
+            </div>
+        </div>
     </div>
 
 </body>

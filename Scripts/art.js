@@ -2,7 +2,7 @@ const sidenav = document.getElementById("sidecontent")
 const pathDisplay = document.getElementById("pathDisplay")
 const img = new Image();
 let selected = false;
-let selectedName ="";
+let selectedName = "";
 
 class Node {
     constructor(value, name) {
@@ -56,15 +56,16 @@ function isDirectory(node) {
 
 
 function fileFunc(path, name) {
-    
+
     if (selected) {
         let prevSelected = document.getElementsByClassName('selected')[0];
-        if (prevSelected) {prevSelected.classList.toggle('selected');}
+        if (prevSelected) { prevSelected.classList.toggle('selected'); }
 
     }
 
     selected = true;
     selectedName = name;
+
     img.src = path;
     img.onload = function () {
         viewNewImage();
@@ -76,7 +77,6 @@ function folderFunc(node, name) {
     list.append(node, name)
     updatePath()
     checkNode(node)
-
     if (selected) {
         const selectables = document.querySelectorAll('span.highlight-text');
         const target = Array.from(selectables).find(el => el.textContent === selectedName);
@@ -84,7 +84,7 @@ function folderFunc(node, name) {
             console.log("found")
             target.parentElement.classList.toggle('selected');
         }
-        
+
     }
 }
 
@@ -147,7 +147,7 @@ function checkNode(folder) {
             sidenav.appendChild(div);
             continue;
         }
-        div.addEventListener('click', () => { 
+        div.addEventListener('click', () => {
             fileFunc(fileData.path, key);
             div.classList.toggle('selected');
         });
@@ -161,8 +161,8 @@ function checkNode(folder) {
 // console.log(obj);'
 
 
-initViewer();
-let list = new LinkedList(Gallery, "root");
+
+let list = new LinkedList(Gallery, "..");
 updatePath()
 checkNode(list.head.value)
 
@@ -173,7 +173,7 @@ function openFolderFromPath(fullPath) {
     const folderSequence = parts.slice(0, -1);
     list = new LinkedList(Gallery, parts[0]);
     let currentFolderObj = Gallery;
-    for (let i = 1; i < folderSequence.length; i++) {
+    for (let i = 3; i < folderSequence.length; i++) {
         const folderName = folderSequence[i];
         if (currentFolderObj[folderName]) {
             currentFolderObj = currentFolderObj[folderName];
@@ -187,9 +187,26 @@ function openFolderFromPath(fullPath) {
     checkNode(currentFolderObj);
     const fileName = parts[parts.length - 1];
     if (currentFolderObj[fileName] && currentFolderObj[fileName].path) {
-        fileFunc(currentFolderObj[fileName].path);
+        const paragraphs = Array.from(document.querySelectorAll('span'));
+        const matches = paragraphs.filter(p => p.textContent.includes(fileName) && p.classList.contains("highlight-container"));
+        if (matches) {
+            matches[0].classList.toggle("selected");
+        }
+        fileFunc(currentFolderObj[fileName].path, fileName);
     }
 
 }
+
+async function setUp() {
+    await initViewer("drawSpace");
+    img.src = "../Assets/Gallery/Completed/Hornet/CompleteLinework.webp";
+    const urlParams = new URLSearchParams(window.location.search);
+    const path = urlParams.get('path');
+    if (path) {
+        openFolderFromPath(path);
+    }
+}
+
+setUp();
 
 

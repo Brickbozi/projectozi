@@ -1,4 +1,23 @@
 html,
+
+body {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: grid;
+    height: 100vh;
+    /* Changed from 100% to 100vh to force a hard boundary matching the screen */
+    width: 100%;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 15% 85%;
+    grid-template-areas:
+        "nav nav"
+        "side path"
+        "side main";
+    overflow: hidden;
+}
+
 #sidenav {
     grid-area: side;
     background-color: #29564c;
@@ -66,9 +85,6 @@ html,
 }
 
 
-::-webkit-scrollbar-track {
-    background: #f1f1f100;
-}
 
 .pathContainer {
     display: flex;

@@ -4,15 +4,18 @@ let angleStep = 10.0;
 let isDragging = false;
 let horReflect = false;
 let vertReflect = false;
-let canvas
+let canvas;
 let device, context, pipeline, uniformBuffer, sampler, bindGroup, renderPassDescriptor;
 let scale, angle, translationX, translationY;
 let currentTexture = null;
 
 
-async function initViewer() {
+async function initViewer(canvasName) {
 
-    canvas = document.getElementById("drawSpace")
+    canvas = document.getElementById(canvasName);
+    if (!canvas) {
+        console.log("canvas not found");
+    }
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     canvas.width = width;
@@ -256,6 +259,8 @@ function viewNewImage() {
             { binding: 2, resource: currentTexture.createView() },
         ],
     });
+
+    canvas.focus();
 
 }
 

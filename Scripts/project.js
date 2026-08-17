@@ -110,6 +110,7 @@ async function playProject() {
             iframe.contentDocument.head.appendChild(genstyle);
             iframe.contentDocument.head.appendChild(artstyle);
         });
+        iframe.focus();
 
 
     } catch (error) {
